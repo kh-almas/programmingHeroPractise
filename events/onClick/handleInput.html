@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>processing input value</title>
+</head>
+<body>
+    <input type="text" id="inputValue">
+    <button id="submit">submit</button>
+    <p id="showInputValue"></p>
+
+    <script>
+        document.getElementById('submit').addEventListener('click', function (){
+            const inputValue = document.getElementById('inputValue');
+            const showValue = document.getElementById('showInputValue');
+            showValue.innerText = inputValue.value;
+        })
+    </script>
+</body>
+</html>
