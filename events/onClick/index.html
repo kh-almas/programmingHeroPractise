@@ -8,30 +8,40 @@
     <title>js dom events</title>
 </head>
 <body>
-    <button onclick="console.log('38')">click me</button>
-    <button onclick="document.body.style.backgroundColor='red'">change the color</button>
-    <button onclick="makeGreen()">change the color</button>
-    <button id="blue">change the color</button>
-    <button id="purple">change the color</button>
-    <script>
-        function makeGreen()
-        {
-            document.body.style.backgroundColor='green';
-        }
+<button onclick="console.log('38')">click me</button>
+<button onclick="document.body.style.backgroundColor='red'">change the color</button>
+<button onclick="makeGreen()">change the color</button>
+<button id="blue">change the color</button>
+<button id="purple">change the color</button>
+<button id="black">change the color</button>
+<script>
+    function makeGreen()
+    {
+        document.body.style.backgroundColor='green';
+    }
 
-        const blue = document.getElementById('blue');
-        blue.onclick = makeBlue;
-        // blue.onclick = makeBlue();  //wrong
-        function makeBlue()
-        {
-            document.body.style.backgroundColor='blue';
-        }
+    const blue = document.getElementById('blue');
+    blue.onclick = makeBlue;
+    // blue.onclick = makeBlue();  //wrong
+    function makeBlue()
+    {
+        document.body.style.backgroundColor='blue';
+    }
 
-        const purple = document.getElementById('purple');
-        purple.onclick = function makepurple()
-        {
-            document.body.style.backgroundColor='purple';
-        }
-    </script>
+    const purple = document.getElementById('purple');
+    purple.onclick = function makepurple()
+    {
+        document.body.style.backgroundColor='purple';
+    }
+
+    // const black = document.getElementById('black');
+    // black.addEventListener('click', function (){
+    //     document.body.style.backgroundColor='black';
+    // })
+
+    document.getElementById('black').addEventListener('click', function (){
+        document.body.style.backgroundColor='black';
+    });
+</script>
 </body>
 </html>
