@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>event delegate</title>
+</head>
+<body>
+    <h1>explore event delegate</h1>
+    <section>
+        <ul id="list-item">
+            <li class="item">Lorem ipsum.</li>
+            <li class="item">Debitis, recusandae.</li>
+            <li class="item">Inventore, voluptatum!</li>
+            <li class="item">Praesentium, vero?</li>
+            <li class="item">Esse, est?</li>
+            <li class="item">Voluptas, voluptates.</li>
+        </ul>
+        <button id="add-new-item">add new item</button>
+    </section>
+    <script>
+
+        //bad code. doesn't remove new item
+        // const items = document.getElementsByClassName('item');
+        // for(const item of items)
+        // {
+        //     item.addEventListener('click',function (event){
+        //         event.target.parentNode.removeChild(event.target);
+        //     })
+        // }
+
+        document.getElementById('list-item').addEventListener('click', function (event){
+            event.target.parentNode.removeChild(event.target);
+        })
+
+        document.getElementById('add-new-item').addEventListener('click', function (){
+            const ul = document.getElementById('list-item');
+            const li = document.createElement('li');
+            li.innerText = 'New item added';
+            li.classList.add('item')
+            ul.appendChild(li);
+        })
+    </script>
+</body>
+</html>
