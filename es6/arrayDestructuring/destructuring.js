@@ -27,8 +27,9 @@ console.log(price);
 
 
 //array destructuring
-
-const [a, b, c, d, e] = [26, 78, 39, 87, 99];
+// z hold all other value
+const [a, b, c, d, e, ...z] = [26, 78, 39, 87, 99, 100, 23, 56, 72, 16];
 console.log(d);
 console.log(c);
 console.log(b);
+console.log(z);
