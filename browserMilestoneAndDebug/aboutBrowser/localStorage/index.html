@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>local storage</title>
+</head>
+<body>
+
+<div>
+    <h4>for string</h4>
+    <button onclick="setItem()">set</button>
+    <button onclick="getItem()">get</button>
+    <button onclick="removeItem()">remove</button>
+    <div>
+        <p id="viewItem"></p>
+    </div>
+</div>
+
+<div>
+    <h4>for array</h4>
+    <button onclick="arrSetItem()">set array</button>
+    <button onclick="arrGetItem()">get array</button>
+    <button onclick="arrRemoveItem()">remove array</button>
+    <div>
+        <p id="arrayItemView"></p>
+    </div>
+</div>
+
+<div>
+    <h4>for object</h4>
+    <button onclick="objSetItem()">set object</button>
+    <button onclick="objGetItem()">get object</button>
+    <button onclick="objRemoveItem()">remove object</button>
+    <div>
+        <p id="objItemView"></p>
+    </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
