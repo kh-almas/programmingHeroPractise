@@ -5,7 +5,7 @@ function submitIssue(e) {
   const description = getInputValue('issueDescription');
   const severity = getInputValue('issueSeverity');
   const assignedTo = getInputValue('issueAssignedTo');
-  const id = Math.floor(Math.random()*100000000) + '';
+  const id = Math.floor(Math.random()*100000000);
   const status = 'Open';
 
   const issue = { id, description, severity, assignedTo, status };
@@ -18,7 +18,7 @@ function submitIssue(e) {
 
   document.getElementById('issueInputForm').reset();
   fetchIssues();
-  e.preventDefault();
+  e.preventDefault(); // prevent refresh
 }
 
 const closeIssue = id => {
@@ -42,6 +42,7 @@ const fetchIssues = () => {
   issuesList.innerHTML = '';
 
   for (var i = 0; i < issues?.length; i++) {
+    // destructuring
     const {id, description, severity, assignedTo, status} = issues[i];
 
     issuesList.innerHTML +=   `<div class="well">
