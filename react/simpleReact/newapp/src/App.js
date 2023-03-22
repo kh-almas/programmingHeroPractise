@@ -18,28 +18,21 @@ const personInfoStyle = {
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+      <div className="App">
+        <header className="App-header">
 
-        <Logo></Logo>
-        <Hello></Hello>
-        <Hello></Hello>
-        <Hello></Hello>
-        <Hello></Hello>
-        <Hello></Hello>
+          <Logo></Logo>
+          <Hello name="Moon"></Hello>
+          <Hello name="Sun"></Hello>
+          <Hello name="Pankha" on="Ghurte thako"></Hello>
 
 
-        <div>
-          <p>Addition result: {numbers[0] + numbers[1] + numbers[2]}</p>
-        </div>
-        <div style={personInfoStyle}>
-          <p>Person info:</p>
-          <p>Name: {name}</p>
-          <p>Address: {address}</p>
-          <p>Phone: {phone}</p>
-        </div>
-      </header>
-    </div>
+          <div>
+            <p>Addition result: {numbers[0] + numbers[1] + numbers[2]}</p>
+          </div>
+          <Person></Person>
+        </header>
+      </div>
   );
 }
 
@@ -48,10 +41,22 @@ function Logo() {
       <img src={logo} className="App-logo" alt="logo" />
   );
 }
-function Hello() {
+function Hello(props) {
   return (
       <div className="container">
-        <h3>Hello, react</h3>
+        <h3>Hello, {props.name}</h3>
+        <p>{props.on}</p>
+      </div>
+  );
+}
+
+function Person() {
+  return (
+      <div style={personInfoStyle}>
+        <p>Person info:</p>
+        <p>Name: {name}</p>
+        <p>Address: {address}</p>
+        <p>Phone: {phone}</p>
       </div>
   );
 }
