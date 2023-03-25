@@ -60,8 +60,6 @@ function Counter(){
 
     const increase = () => setCount(count+1);
     const decrease = () => setCount(count-1);
-
-
     return(
         <div>
             <h1>Counter: {count}</h1>
