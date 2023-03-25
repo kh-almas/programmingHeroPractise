@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
 
 const numbers = [23, 27, 55];
 
@@ -30,18 +31,42 @@ function App() {
         <div className="App">
             <header className="App-header">
 
-                <Logo></Logo>
-                {
-                    arr.map(data => <Hello name={data}></Hello>)
-                }
-                <div>
-                    <p>Addition result: {numbers[0] + numbers[1] + numbers[2]}</p>
-                </div>
-                {
-                    persons.map(person => <Person data={person}></Person>)
-                }
+                <Counter></Counter>
 
+                {/*<Logo></Logo>*/}
+                {/*{*/}
+                {/*    arr.map(data => <Hello name={data}></Hello>)*/}
+                {/*}*/}
+                {/*<div>*/}
+                {/*    <p>Addition result: {numbers[0] + numbers[1] + numbers[2]}</p>*/}
+                {/*</div>*/}
+                {/*{*/}
+                {/*    persons.map(person => <Person data={person}></Person>)*/}
+                {/*}*/}
             </header>
+        </div>
+    );
+}
+
+function Counter(){
+    const [count, setCount] = useState(10);
+    // console.log(state);
+
+    // const increase = () => {
+    //     // const newCount = count++; // Uncaught TypeError: Assignment to constant variable.
+    //     const newCount = count+1;
+    //     setCount(newCount);
+    // }
+
+    const increase = () => setCount(count+1);
+    const decrease = () => setCount(count-1);
+
+
+    return(
+        <div>
+            <h1>Counter: {count}</h1>
+            <button onClick={increase}>Increase</button>
+            <button onClick={decrease}>Decrease</button>
         </div>
     );
 }
@@ -51,6 +76,7 @@ function Logo() {
         <img src={logo} className="App-logo" alt="logo" />
     );
 }
+
 function Hello(props) {
     return (
         <div className="container">
