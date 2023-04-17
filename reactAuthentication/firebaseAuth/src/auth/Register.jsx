@@ -1,10 +1,18 @@
-import React, {useState} from 'react';
-import {createUserWithEmailAndPassword, sendEmailVerification, updateProfile} from "firebase/auth";
+import React, {useRef, useState} from 'react';
+import {
+    createUserWithEmailAndPassword,
+    sendEmailVerification,
+    updateProfile,
+} from "firebase/auth";
 import auth from "../firebase/firebase.init.js";
+import ResetPassword from "./ResetPassword.jsx";
 
 const Register = () => {
     const [errors, setErrors] = useState('');
+    const emailRef = useRef();
     const addNewUser = (event) => {
+        // const newPassword = getASecureRandomPassword();
+
         event.preventDefault();
         setErrors('');
         const name = event.target.name.value;
@@ -54,12 +62,13 @@ const Register = () => {
             <p>{errors}</p>
             <form onSubmit={addNewUser}>
                 <input name="name" type="name" placeholder="Name" className="w-full px-3 py-2 mb-3 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"/>
-                <input name="email" type="email" placeholder="Email" className="w-full px-3 py-2 mb-3 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"/>
+                <input name="email" ref={emailRef} type="email" placeholder="Email" className="w-full px-3 py-2 mb-3 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"/>
                 <input name="password" type="password" placeholder="Password" className="w-full px-3 py-2 mb-3 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"/>
                 <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
                     Sign Up
                 </button>
             </form>
+            <ResetPassword emailRef={emailRef}/>
         </>
     );
 };

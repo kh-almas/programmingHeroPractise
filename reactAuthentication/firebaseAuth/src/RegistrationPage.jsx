@@ -12,7 +12,7 @@ const RegistrationPage = () => {
                 <Register />
 
                 <div className="flex justify-center items-center mt-4">
-                    <span className="text-gray-500">Or sign in with</span>
+                    <span className="text-gray-500">Or sign up with</span>
                     <div className="flex ml-2">
                         <GoogleAuth/>
                         <GitHubAuth />
