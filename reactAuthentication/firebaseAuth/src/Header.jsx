@@ -27,7 +27,9 @@ const Header = () => {
                 <Link to={'/login'}>
                     <button className="bg-white text-blue-500 py-2 px-4 rounded-md hover:bg-gray-100">Login</button>
                 </Link>
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Register</button>
+                <Link to={'/register'}>
+                    <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Register</button>
+                </Link>
             </div>
         </header>
     );
