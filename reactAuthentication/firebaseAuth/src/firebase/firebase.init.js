@@ -5,6 +5,16 @@ import {getAuth} from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// const firebaseConfig = {
+//     apiKey: "AIzaSyBADTRpng4En-2lYtLcXVElcpnpGHO9btg",
+//     authDomain: "firecheck-55526.firebaseapp.com",
+//     projectId: "firecheck-55526",
+//     storageBucket: "firecheck-55526.appspot.com",
+//     messagingSenderId: "291761280740",
+//     appId: "1:291761280740:web:6ce8f5873cec620599bef1"
+// };
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBADTRpng4En-2lYtLcXVElcpnpGHO9btg",
     authDomain: "firecheck-55526.firebaseapp.com",
