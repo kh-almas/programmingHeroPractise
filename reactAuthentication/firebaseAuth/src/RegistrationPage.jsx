@@ -2,6 +2,7 @@ import React from "react";
 import GoogleAuth from "./auth/googleAuth.jsx";
 import GitHubAuth from "./auth/GitHubAuth.jsx";
 import Register from "./auth/Register.jsx";
+import {Link} from "react-router-dom";
 
 const RegistrationPage = () => {
     return (

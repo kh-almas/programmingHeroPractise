@@ -1,15 +1,16 @@
-import React, {useRef, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import {
-    createUserWithEmailAndPassword,
     sendEmailVerification,
     updateProfile,
 } from "firebase/auth";
-import auth from "../firebase/firebase.init.js";
 import ResetPassword from "./ResetPassword.jsx";
+import {AuthContext} from "../provider/AuthProvider.jsx";
+import {Link} from "react-router-dom";
 
 const Register = () => {
     const [errors, setErrors] = useState('');
     const emailRef = useRef();
+    const { userResister } = useContext(AuthContext);
     const addNewUser = (event) => {
         // const newPassword = getASecureRandomPassword();
 
@@ -19,8 +20,9 @@ const Register = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         event.target.reset();
-        // console.log(event.target.name.value);
-        createUserWithEmailAndPassword(auth, email, password)
+
+        //get this function from context
+        userResister(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 updateUser(user, name);
@@ -68,6 +70,9 @@ const Register = () => {
                     Sign Up
                 </button>
             </form>
+            <Link to={'/guest'} className="block text-center w-full mt-4 py-2 px-4 rounded-md border">
+                Continue as a guest
+            </Link>
             <ResetPassword emailRef={emailRef}/>
         </>
     );

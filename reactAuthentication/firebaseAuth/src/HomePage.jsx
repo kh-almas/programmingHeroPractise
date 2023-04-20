@@ -2,13 +2,13 @@ import React, {useContext} from 'react';
 import {AuthContext} from "./provider/AuthProvider.jsx";
 
 const HomePage = () => {
-    const user = useContext(AuthContext);
-    console.log(user);
+    const authInfo = useContext(AuthContext);
+    console.log(authInfo)
     return (
         <div className="bg-gray-100 min-h-screen">
             <main className="container mx-auto px-4 py-8">
                 <section className="text-center">
-                    <h1 className="text-4xl font-bold mb-4 text-gray-800">Welcome {user && user.displayName } to My Website</h1>
+                    <h1 className="text-4xl font-bold mb-4 text-gray-800">Welcome {authInfo.user && authInfo.user.displayName } to My Website</h1>
                     <p className="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ullamcorper malesuada orci eu convallis.</p>
                 </section>
                 <section className="mt-8 text-center">
