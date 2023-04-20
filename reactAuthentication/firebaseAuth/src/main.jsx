@@ -9,6 +9,7 @@ import HomePage from "./HomePage.jsx";
 import RegistrationPage from "./RegistrationPage.jsx";
 import AuthProvider from "./provider/AuthProvider.jsx";
 import PasswordLessAuthPage from "./PasswordLessAuthPage.jsx";
+import PrivateRoutes from "./routes/PrivateRoutes.jsx";
 
 const router = createBrowserRouter([
     {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
         children:[
             {
                 path: '/',
-                element: <HomePage />,
+                element: <PrivateRoutes><HomePage /></PrivateRoutes>,
             },
             {
                 path: '/login',

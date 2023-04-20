@@ -5,6 +5,7 @@ import auth from "../firebase/firebase.init.js";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState('');
+    const [loading, setLoading] = useState(true);
 
     // observe auth state change
     useEffect(() => {
@@ -13,6 +14,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             console.log(uid);
             console.log(currentUser);
+            setLoading(false);
         });
 
         return () => {
@@ -33,6 +35,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const authInfo = {
+        loading,
         user,
         setUser,
         userResister,

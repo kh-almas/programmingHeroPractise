@@ -1,10 +1,6 @@
 import React, {useState} from 'react';
 import auth from "../firebase/firebase.init.js";
 import { sendSignInLinkToEmail } from "firebase/auth";
-import Login from "./Login.jsx";
-import {Link} from "react-router-dom";
-import GoogleAuth from "./googleAuth.jsx";
-import GitHubAuth from "./GitHubAuth.jsx";
 
 const PasswordLessAuthForm = () => {
     const [errors, setErrors] = useState('');
