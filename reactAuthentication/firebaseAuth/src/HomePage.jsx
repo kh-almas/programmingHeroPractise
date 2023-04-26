@@ -3,7 +3,7 @@ import {AuthContext} from "./provider/AuthProvider.jsx";
 
 const HomePage = () => {
     const authInfo = useContext(AuthContext);
-    console.log(authInfo)
+    // console.log(authInfo)
     return (
         <div className="bg-gray-100 min-h-screen">
             <main className="container mx-auto px-4 py-8">

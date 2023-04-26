@@ -10,6 +10,8 @@ import RegistrationPage from "./RegistrationPage.jsx";
 import AuthProvider from "./provider/AuthProvider.jsx";
 import PasswordLessAuthPage from "./PasswordLessAuthPage.jsx";
 import PrivateRoutes from "./routes/PrivateRoutes.jsx";
+import ManageUsers from "./manage/user/ManageUsers.jsx";
+import ProfileInfoView from "./profile/ProfileInfoView.jsx";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
             {
                 path: '/guest',
                 element: <PasswordLessAuthPage />,
+            },
+            {
+                path: '/manage/user',
+                element: <ManageUsers />,
+            },
+            {
+                path: '/update/profile',
+                element: <PrivateRoutes><ProfileInfoView /></PrivateRoutes>,
             }
         ],
     }

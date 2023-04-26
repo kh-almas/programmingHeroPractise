@@ -32,6 +32,12 @@ const Header = () => {
                     <li>
                         <a href="/contact" className="hover:text-gray-300">Contact</a>
                     </li>
+                    <li>
+                        <a href="/manage/user" className="hover:text-gray-300">All users</a>
+                    </li>
+                    <li>
+                        <a href="/update/profile" className="hover:text-gray-300">Profile</a>
+                    </li>
                 </ul>
             </nav>
             {

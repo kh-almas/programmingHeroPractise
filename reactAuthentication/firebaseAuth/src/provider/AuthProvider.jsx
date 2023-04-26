@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
         });
 
         return () => {
-            unsubscribe();
+            return unsubscribe();
         }
     }, []);
     const userResister = (email, password) =>
