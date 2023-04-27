@@ -1,8 +1,5 @@
 import React, {useContext, useRef, useState} from 'react';
-import {
-    sendEmailVerification,
-    updateProfile,
-} from "firebase/auth";
+import {sendEmailVerification, updateProfile} from "firebase/auth";
 import ResetPassword from "./ResetPassword.jsx";
 import {AuthContext} from "../provider/AuthProvider.jsx";
 import {Link} from "react-router-dom";
@@ -11,25 +8,27 @@ const Register = () => {
     const [errors, setErrors] = useState('');
     const emailRef = useRef();
     const { userResister } = useContext(AuthContext);
-    const addNewUser = (event) => {
+    const addNewUser = event => {
         // const newPassword = getASecureRandomPassword();
 
         event.preventDefault();
         setErrors('');
-        const name = event.target.name.value;
-        const email = event.target.email.value;
-        const password = event.target.password.value;
-        event.target.reset();
+        const form = event.target
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        form.reset();
 
         //get this function from context
         userResister(email, password)
-            .then((userCredential) => {
+            .then(userCredential => {
                 const user = userCredential.user;
                 updateUser(user, name);
                 userVerificationByEmail(user);
                 console.log(user);
+                //redirect URl
             })
-            .catch((error) => {
+            .catch(error => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 setErrors(errorCode);
@@ -48,7 +47,7 @@ const Register = () => {
             console.log(error.code)
         });
     }
-    const userVerificationByEmail = (user) => {
+    const userVerificationByEmail = user => {
         sendEmailVerification(user)
             .then(() => {
                 console.log('email sent');

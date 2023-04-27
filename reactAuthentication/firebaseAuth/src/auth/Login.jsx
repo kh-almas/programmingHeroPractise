@@ -6,7 +6,7 @@ import {AuthContext} from "../provider/AuthProvider.jsx";
 const Login = () => {
     const [errors, setErrors] = useState('');
     const { userLogin } = useContext(AuthContext);
-    const userLoginAction = (event) => {
+    const userLoginAction = event => {
     event.preventDefault();
     setErrors('');
     const email = event.target.email.value;
@@ -15,11 +15,11 @@ const Login = () => {
 
     //get this function from context
         userLogin(email, password)
-        .then((userCredential) => {
+        .then(userCredential => {
             const user = userCredential.user;
             console.log(user);
         })
-        .catch((error) => {
+        .catch(error => {
             const errorCode = error.code;
             const errorMessage = error.message;
             setErrors(errorCode);

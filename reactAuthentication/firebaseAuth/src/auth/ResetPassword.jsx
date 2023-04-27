@@ -9,7 +9,7 @@ const ResetPassword = ({ emailRef }) => {
             .then(() => {
                 alert('check your email');
             })
-            .catch((error) => {
+            .catch(error => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode);

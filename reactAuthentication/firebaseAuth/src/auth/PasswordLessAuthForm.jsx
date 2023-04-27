@@ -32,7 +32,7 @@ const PasswordLessAuthForm = () => {
                 window.localStorage.setItem('emailForSignIn', email);
                 console.log('check local storage');
             })
-            .catch((error) => {
+            .catch(error => {
                 const errorCode = error.code;
                 console.log(errorCode);
             });

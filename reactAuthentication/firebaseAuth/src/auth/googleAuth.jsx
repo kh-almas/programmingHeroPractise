@@ -6,7 +6,7 @@ const GoogleAuth = () => {
     const provider = new GoogleAuthProvider();
     const googleLogin = () => {
         signInWithPopup(auth, provider)
-            .then((result) => {
+            .then(result => {
                 const user = result.user;
                 console.log(user);
             })
