@@ -1,60 +1,102 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext } from "react";
 import "tailwindcss/tailwind.css";
-import {AuthContext} from "../provider/AuthProvider.jsx";
-import {database} from "../firebase/firebase.init.js";
-import { getDatabase, ref, child, get } from "firebase/database";
 import {ProfileDataContext} from "../provider/ProfileInfoProvider.jsx";
 import {Link} from "react-router-dom";
+import {AuthContext} from "../provider/AuthProvider.jsx";
 
 function ProfileInfoView() {
     const { profileData } = useContext(ProfileDataContext);
+    const { user } = useContext(AuthContext);
     return (
-        <div className="bg-white p-6 rounded-lg shadow-md">
-            <div className="flex items-center mb-5">
-                <img
-                    className="w-20 h-20 rounded-full mr-5"
-                    src="https://randomuser.me/api/portraits/women/21.jpg"
-                    alt="Profile"
-                />
+        <div className="bg-white p-6 rounded-lg shadow-md w-2/3 mx-auto mt-3">
+            <div className="grid place-items-center mb-5">
                 <div>
-                    <div>
+                    <img
+                        className="w-40 h-25 rounded-full mr-5"
+                        src={profileData?.profileImage}
+                        alt="Profile"
+                    />
+                    <div className="text-center">
                         <h1 className="font-bold text-xl">{profileData?.firstName} {profileData?.lastName}</h1>
-                        <p className="text-gray-600">{profileData?.username}</p>
+                        <p className="text-gray-600">{user?.displayName}</p>
                     </div>
-                    <div className="mt-2">
-                        <Link to={'/update/profile'} className="border rounded px-3 py-1">Edit your profile</Link>
+                    <div className="mt-2 grid place-items-center">
+                        <Link to={'/update/profile'} className="mx-auto border rounded px-3 py-1">Edit your profile</Link>
                     </div>
                 </div>
             </div>
             <div className="mb-5">
-                <h2 className="font-bold mb-3">About Me</h2>
-                <p className="text-gray-600">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                    suscipit metus vel tortor gravida congue. Nullam at velit ut velit
-                    ultrices vulputate euismod ut ante. Etiam posuere venenatis lacinia.
-                    Etiam vel enim ut mauris tempor finibus vitae a eros. Sed eu arcu quis
-                    felis malesuada tincidunt sed eu nibh. Morbi aliquet turpis sit amet
-                    lectus rutrum, nec commodo metus euismod. Donec et mauris blandit,
-                    vestibulum sapien sed, pellentesque velit. Integer sit amet felis vel
-                    quam placerat luctus. Praesent eget erat ut urna venenatis vehicula
-                    ac eu dui. Sed cursus sapien velit, id maximus nisl dictum eu. Donec
-                    at risus elit. Morbi vestibulum purus eu ligula venenatis
-                    condimentum.
-                </p>
+                {
+                    profileData?.about ?
+                        <>
+                            <h2 className="font-bold mb-3">About Me</h2>
+                            <p className="text-gray-600">
+                                {profileData?.about}
+                            </p>
+                        </>
+                        : ''
+                }
+
             </div>
-            <div>
-                <h2 className="font-bold mb-3">Contact Information</h2>
-                <ul className="list-disc ml-5">
-                    <li className="text-gray-600">Email: {profileData?.email}</li>
-                    <li className="text-gray-600">Phone: {profileData?.phone}</li>
-                    <li className="text-gray-600">Address: {profileData?.address}, {profileData?.state}, {profileData?.zipCode}, {profileData?.country}</li>
-                    <li className="text-gray-600">Website: {profileData?.website}</li>
-                    <li className="text-gray-600">Facebook: {profileData?.facebook}</li>
-                    <li className="text-gray-600">Instagram: {profileData?.instagram}</li>
-                    <li className="text-gray-600">LinkedIn: {profileData?.linkedin}</li>
-                    <li className="text-gray-600">GitHub: {profileData?.github}</li>
-                </ul>
-            </div>
+            {
+                profileData?.alternativeEmail ||
+                profileData?.phone ||
+                profileData?.address ||
+                profileData?.state ||
+                profileData?.zipCode ||
+                profileData?.country ||
+                profileData?.website ||
+                profileData?.facebook ||
+                profileData?.instagram ||
+                profileData?.linkedin ||
+                profileData?.github ?
+                    <div>
+                        <h2 className="font-bold mb-3">Contact Information</h2>
+                        <ul className="list-disc ml-5">
+                            {
+                                profileData?.alternativeEmail
+                                    ? <li className="text-gray-600">Alternative Email: {profileData?.alternativeEmail}</li>
+                                    : ''
+                            }
+                            {
+                                profileData?.phone
+                                    ? <li className="text-gray-600">Phone: {profileData?.phone}</li>
+                                    : ''
+                            }
+                            {
+                                profileData?.address || profileData?.state || profileData?.zipCode || profileData?.country
+                                    ? <li className="text-gray-600">Address: {profileData?.address} {profileData?.state} {profileData?.zipCode}, {profileData?.country}</li>
+                                    : ''
+                            }
+                            {
+                                profileData?.website
+                                    ? <li className="text-gray-600">Website: {profileData?.website}</li> :
+                                    ''
+                            }
+                            {
+                                profileData?.facebook
+                                    ? <li className="text-gray-600">Facebook: {profileData?.facebook}</li>
+                                    : ''
+                            }
+                            {
+                                profileData?.instagram
+                                    ? <li className="text-gray-600">Instagram: {profileData?.instagram}</li>
+                                    : ''
+                            }
+                            {
+                                profileData?.linkedin
+                                    ? <li className="text-gray-600">LinkedIn: {profileData?.linkedin}</li>
+                                    : ''
+                            }
+                            {
+                                profileData?.github
+                                    ? <li className="text-gray-600">GitHub: {profileData?.github}</li>
+                                    : ''
+                            }
+                        </ul>
+                    </div> : ''
+            }
+
         </div>
     );
 }

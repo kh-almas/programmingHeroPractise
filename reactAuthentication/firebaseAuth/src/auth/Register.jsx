@@ -7,14 +7,14 @@ import {Link} from "react-router-dom";
 const Register = () => {
     const [errors, setErrors] = useState('');
     const emailRef = useRef();
-    const { userResister } = useContext(AuthContext);
+    const { userResister, updateUser } = useContext(AuthContext);
     const addNewUser = event => {
         // const newPassword = getASecureRandomPassword();
 
         event.preventDefault();
         setErrors('');
         const form = event.target
-        const name = form.name.value;
+        const userName = form.userName.value;
         const email = form.email.value;
         const password = form.password.value;
         form.reset();
@@ -23,7 +23,7 @@ const Register = () => {
         userResister(email, password)
             .then(userCredential => {
                 const user = userCredential.user;
-                updateUser(user, name);
+                updateUser(user, userName);
                 userVerificationByEmail(user);
                 console.log(user);
                 //redirect URl
@@ -37,16 +37,7 @@ const Register = () => {
 
 
     }
-    const updateUser = (user, name) => {
-        updateProfile(user, {
-            displayName: name,
-        }).then(() => {
-            console.log('profile updated');
-        }).catch((error) => {
-            setErrors(error.code);
-            console.log(error.code)
-        });
-    }
+
     const userVerificationByEmail = user => {
         sendEmailVerification(user)
             .then(() => {
@@ -62,7 +53,7 @@ const Register = () => {
         <>
             <p>{errors}</p>
             <form onSubmit={addNewUser}>
-                <input name="name" type="name" placeholder="Name" className="w-full px-3 py-2 mb-3 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"/>
+                <input name="userName" type="text" placeholder="User Name" className="w-full px-3 py-2 mb-3 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"/>
                 <input name="email" ref={emailRef} type="email" placeholder="Email" className="w-full px-3 py-2 mb-3 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"/>
                 <input name="password" type="password" placeholder="Password" className="w-full px-3 py-2 mb-3 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"/>
                 <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
