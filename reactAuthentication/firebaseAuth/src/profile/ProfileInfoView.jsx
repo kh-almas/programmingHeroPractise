@@ -3,25 +3,11 @@ import "tailwindcss/tailwind.css";
 import {AuthContext} from "../provider/AuthProvider.jsx";
 import {database} from "../firebase/firebase.init.js";
 import { getDatabase, ref, child, get } from "firebase/database";
+import {ProfileDataContext} from "../provider/ProfileInfoProvider.jsx";
+import {Link} from "react-router-dom";
 
 function ProfileInfoView() {
-    const [profileData, setProfileData] = useState({});
-    const { user, loading } =useContext(AuthContext);
-
-    useEffect(()=> {
-        // const dbRef = ref(getDatabase());
-        get(child(ref(database), `users/profile/` + user?.uid)).then((snapshot) => {
-            if (snapshot.exists()) {
-                console.log(snapshot.val());
-                setProfileData(snapshot.val());
-            } else {
-                console.log("No data available");
-            }
-        }).catch((error) => {
-            console.error(error);
-        });
-    }, [user])
-    // const profileData = {};
+    const { profileData } = useContext(ProfileDataContext);
     return (
         <div className="bg-white p-6 rounded-lg shadow-md">
             <div className="flex items-center mb-5">
@@ -31,8 +17,13 @@ function ProfileInfoView() {
                     alt="Profile"
                 />
                 <div>
-                    <h1 className="font-bold text-xl">{profileData?.firstName} {profileData?.lastName}</h1>
-                    <p className="text-gray-600">{profileData?.username}</p>
+                    <div>
+                        <h1 className="font-bold text-xl">{profileData?.firstName} {profileData?.lastName}</h1>
+                        <p className="text-gray-600">{profileData?.username}</p>
+                    </div>
+                    <div className="mt-2">
+                        <Link to={'/update/profile'} className="border rounded px-3 py-1">Edit your profile</Link>
+                    </div>
                 </div>
             </div>
             <div className="mb-5">

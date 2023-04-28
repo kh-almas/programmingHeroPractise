@@ -12,6 +12,8 @@ import PasswordLessAuthPage from "./PasswordLessAuthPage.jsx";
 import PrivateRoutes from "./routes/PrivateRoutes.jsx";
 import ManageUsers from "./manage/user/ManageUsers.jsx";
 import ProfileInfoView from "./profile/ProfileInfoView.jsx";
+import ProfileInfoProvider from "./provider/ProfileInfoProvider.jsx";
+import ProfileForm from "./profile/ProfileForm.jsx";
 
 const router = createBrowserRouter([
     {
@@ -40,8 +42,22 @@ const router = createBrowserRouter([
                 element: <ManageUsers />,
             },
             {
+                path: '/view/profile',
+                element:
+                    <ProfileInfoProvider>
+                        <PrivateRoutes>
+                            <ProfileInfoView />
+                        </PrivateRoutes>
+                    </ProfileInfoProvider>,
+            },
+            {
                 path: '/update/profile',
-                element: <PrivateRoutes><ProfileInfoView /></PrivateRoutes>,
+                element:
+                    <ProfileInfoProvider>
+                        <PrivateRoutes>
+                            <ProfileForm />
+                        </PrivateRoutes>
+                    </ProfileInfoProvider>,
             }
         ],
     }

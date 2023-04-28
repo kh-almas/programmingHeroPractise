@@ -33,10 +33,10 @@ const Header = () => {
                         <a href="/contact" className="hover:text-gray-300">Contact</a>
                     </li>
                     <li>
-                        <a href="/manage/user" className="hover:text-gray-300">All users</a>
+                        <Link to="/manage/user" className="hover:text-gray-300">All users</Link>
                     </li>
                     <li>
-                        <a href="/update/profile" className="hover:text-gray-300">Profile</a>
+                        <Link to="/view/profile" className="hover:text-gray-300">Profile</Link>
                     </li>
                 </ul>
             </nav>
